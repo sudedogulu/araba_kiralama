@@ -1,27 +1,84 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr"> 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Araç Kiralama</title>
+        <title>Arac Kiralama - Kategoriler</title>
         <link rel="stylesheet" href="arac-kiralama/css/style.css">
     </head>
 <body>
     <nav>
         <h1>DriveNow</h1>
 
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
+                <ul>
+            <li><a href="main_menu.html">Ana Sayfa</a></li>
             <li><a href="cars.html">Araçlar</a></li>
-            <li><a href="about.html">Hakkımızda</a></li>
-            <li><a href="contact.html">İletişim</a></li>
             <li><a href="sedan.html">Sedan</a></li>
             <li><a href="electric.html">Elektrikli</a></li>
             <li><a href="economy.html">Ekonomik</a></li>
-            <li><a href="reservation.html">Rezervasyon</a></li>
             <li><a href="suv.html">SUV</a></li>
         </ul>
+        <li><a href="login.html" class="login-btn">Giris Yap</a></li>
     </nav>
-            <li><a href="login.html" class="login-btn">Giriş Yap</a></li>
+
+    <div class="category-container">
+        <h2>Arac Kategorilerini Secin</h2>
+        <p>Sizin icin en uygun arac kategorisini secin</p>
+
+        <div class="category-grid">
+            <!-- Sedan Category -->
+            <a href="sedan.html" class="category-card">
+                <div class="category-image">
+                    <img src="arac-kiralama/images/sedan.jpg" alt="Sedan">
+                </div>
+                <div class="category-info">
+                    <h3>Sedan</h3>
+                    <p>Konforlu ve ekonomik</p>
+                </div>
+            </a>
+
+            <!-- SUV Category -->
+            <a href="suv.html" class="category-card">
+                <div class="category-image">
+                    <img src="arac-kiralama/images/suv.jpg" alt="SUV">
+                </div>
+                <div class="category-info">
+                    <h3>SUV</h3>
+                    <p>Guclu ve genis</p>
+                </div>
+            </a>
+
+            <!-- Electric Category -->
+            <a href="electric.html" class="category-card">
+                <div class="category-image">
+                    <img src="arac-kiralama/images/electric.jpg" alt="Elektrikli">
+                </div>
+                <div class="category-info">
+                    <h3>Elektrikli Araclar</h3>
+                    <p>Cevre dostu ve modern</p>
+                </div>
+            </a>
+
+            <!-- Economy Category -->
+            <a href="economy.html" class="category-card">
+                <div class="category-image">
+                    <img src="arac-kiralama/images/economy.jpg" alt="Ekonomik">
+                </div>
+                <div class="category-info">
+                    <h3>Ekonomik</h3>
+                    <p>Uygun fiyatli secenek</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <footer class="bottom-barrier">
+        <h3>DriveNow</h3>
+        <div class="bottom-links">
+            <a href="about.html">Hakkimizda</a>
+            <a href="contact.html">Iletisim</a>
+            <a href="reservation.html">Rezervasyon</a>
+        </div>
+    </footer>
 </body>
 </html>
+
