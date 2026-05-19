@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
-<html lang="tr"> 
+<?php
+session_start();
+$userEmail = $_SESSION['user_email'] ?? null;
+$isLoggedIn = !empty($userEmail);
+?>
+<!DOCTYPE html>
+<html lang="tr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
         <title>Araç Kiralama</title>
         <link rel="stylesheet" href="arac-kiralama/css/style.css">
     </head>
@@ -12,13 +16,17 @@
         <h1>DriveNow</h1>
 
         <ul>
-            <li><a href="main_menu.html">Ana Sayfa</a></li>
+            <li><a href="main_menu.php">Ana Sayfa</a></li>
             <li><a href="cars.html">Araçlar</a></li>
             <li><a href="sedan.html">Sedan</a></li>
             <li><a href="electric.html">Elektrikli</a></li>
             <li><a href="economy.html">Ekonomik</a></li>
             <li><a href="suv.html">SUV</a></li>
-            <li><button class="login-btn" onclick="openLogin(event)">Giriş Yap/Kayıt Ol</button></li>
+            <?php if ($isLoggedIn): ?>
+                <li><a href="arac-kiralama/php/logout.php" class="login-btn profile-icon" title="Oturumu Kapat">&#128100;</a></li>
+            <?php else: ?>
+                <li><button class="login-btn" onclick="openLogin(event)">Giriş Yap/Kayıt Ol</button></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -67,5 +75,3 @@
     <script src="arac-kiralama/js/style.js"></script>
 </body>
 </html>
-
-

@@ -11,15 +11,27 @@
         <h1>DriveNow</h1>
 
                 <ul>
-            <li><a href="main_menu.html">Ana Sayfa</a></li>
+            <li><a href="main_menu.php">Ana Sayfa</a></li>
             <li><a href="cars.html">Araçlar</a></li>
             <li><a href="sedan.html">Sedan</a></li>
             <li><a href="electric.html">Elektrikli</a></li>
             <li><a href="economy.html">Ekonomik</a></li>
             <li><a href="suv.html">SUV</a></li>
-        </ul>
-            <li><a href="login.html" class="login-btn">Giriş Yap</a></li>
+                <li><a href="login.html" class="login-btn">Giriş Yap</a></li>
+    </ul>
     </nav>
+    <main class="auth-page">
+        <h2>Kayıt Ol</h2>
+        <form method="post" action="arac-kiralama/php/register.php">
+            <input type="text" name="full_name" placeholder="Ad Soyad" required>
+            <input type="tel" name="phone" placeholder="Telefon Numarası" required>
+            <input type="email" name="email" placeholder="E-posta" required>
+            <input type="password" name="password" placeholder="Şifre" required>
+            <input type="password" name="password2" placeholder="Şifreyi Tekrarla" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <p class="auth-footer">Zaten hesabın var mı? <a href="login.html">Giriş yap</a></p>
+    </main>
     <footer class="bottom-barrier">
         <h3>DriveNow</h3>
         <div class="bottom-links">
@@ -31,4 +43,7 @@
 </body>
 
 </html>
+
+
+
 
