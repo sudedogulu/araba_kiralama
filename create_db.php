@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = mysqli_connect("localhost", "root", "", "araba_kiralama");
+$conn = mysqli_connect("localhost", "root", "", "ARABA_KIRALAMA");
 
 if (!$conn) {
     die("Bağlantı başarısız: " . mysqli_connect_error());
@@ -20,8 +20,9 @@ $sql = "CREATE TABLE IF NOT EXISTS `users` (
 
 if (mysqli_query($conn, $sql)) {
     echo "<h2 style='color: green; font-family: Arial;'>✅ Tablo başarıyla oluşturuldu!</h2>";
-    echo "<p>Users tablosu araba_kiralama veritabanında oluşturulmuştur.</p>";
-    echo "<p><a href='main_menu.php'>Ana sayfaya dön</a></p>";
+    echo "<p>Users tablosu ARABA_KIRALAMA veritabanında oluşturulmuştur.</p>";
+    // Link güncellendi: index.php yerine index.php'e gidiyor
+    echo "<p><a href='../index.php'>Ana sayfaya dön</a></p>";
 } else {
     echo "<h2 style='color: red; font-family: Arial;'>❌ Hata oluştu!</h2>";
     echo "<p>Hata: " . mysqli_error($conn) . "</p>";
