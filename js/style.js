@@ -24,7 +24,6 @@ function closeRegister() {
   if (registerModal) registerModal.style.display = "none";
 }
 
-// Galeri Modalı Fonksiyonları
 function openGalleryModal(carName, images) {
   const galleryModal = document.getElementById('galleryModal');
   if (!galleryModal) return;
@@ -66,22 +65,25 @@ function changeMainImage(imageSrc, thumbnail) {
   thumbnail.classList.add('active');
 }
 
-// Kiralama Modalı Fonksiyonları
 function openRentModal(carName, dailyPrice) {
   const rentModal = document.getElementById('rentModal');
   if (!rentModal) return;
 
-  document.getElementById('rentCarTitle').innerText = carName + " Kirala";
-  document.getElementById('hiddenCarName').value = carName;
+  document.getElementById('selectedCarName').innerText = carName + " Kirala";
+  document.getElementById('carNameInput').value = carName;
+  document.getElementById('dailyPriceInput').value = dailyPrice;
   
-  let price1 = dailyPrice;
-  let price3 = dailyPrice * 3 * 0.95; 
-  let price7 = dailyPrice * 7 * 0.90; 
+  document.getElementById('rentForm').reset();
+  document.getElementById('totalPriceDisplay').innerText = '0 ₺';
+  document.getElementById('totalPriceInput').value = 0;
   
-  document.getElementById('price1').innerText = price1.toLocaleString('tr-TR');
-  document.getElementById('price3').innerText = price3.toLocaleString('tr-TR');
-  document.getElementById('price7').innerText = price7.toLocaleString('tr-TR');
+  const today = new Date().toISOString().split('T')[0];
+  const startDate = document.getElementById('startDate');
+  const endDate = document.getElementById('endDate');
   
+  if(startDate) startDate.setAttribute('min', today);
+  if(endDate) endDate.setAttribute('min', today);
+
   rentModal.style.display = 'flex';
 }
 
@@ -90,7 +92,44 @@ function closeRentModal() {
   if (rentModal) rentModal.style.display = 'none';
 }
 
-// Dışarı tıklanınca TÜM modalları kapatma
+document.addEventListener("DOMContentLoaded", function() {
+  const startDate = document.getElementById('startDate');
+  const endDate = document.getElementById('endDate');
+  const dailyPriceInput = document.getElementById('dailyPriceInput');
+  const totalPriceDisplay = document.getElementById('totalPriceDisplay');
+  const totalPriceInput = document.getElementById('totalPriceInput');
+
+  function calculatePrice() {
+      if (startDate.value && endDate.value) {
+          const start = new Date(startDate.value);
+          const end = new Date(endDate.value);
+          
+          const timeDiff = end.getTime() - start.getTime();
+          const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+          
+          if (daysDiff > 0) {
+              const dailyPrice = parseFloat(dailyPriceInput.value);
+              const total = daysDiff * dailyPrice;
+              totalPriceDisplay.innerText = total.toLocaleString('tr-TR') + ' ₺';
+              totalPriceInput.value = total;
+          } else {
+              totalPriceDisplay.innerText = 'Hatalı Tarih!';
+              totalPriceInput.value = 0;
+          }
+      }
+  }
+
+  if(startDate) {
+      startDate.addEventListener('change', () => {
+          endDate.setAttribute('min', startDate.value);
+          calculatePrice();
+      });
+  }
+  if(endDate) {
+      endDate.addEventListener('change', calculatePrice);
+  }
+});
+
 window.addEventListener('click', function (event) {
   const loginModal = document.getElementById('loginModal');
   const registerModal = document.getElementById('registerModal');

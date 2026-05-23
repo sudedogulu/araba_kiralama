@@ -7,6 +7,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+    padding-top: 50px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -26,7 +27,6 @@ body.home-page {
         rgba(20,20,20,0.75)
     ),
     url("../images/anasayfa.jpeg");
-
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -253,7 +253,6 @@ body.home-page .hero {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
-/* Kategori Seçim Alanı */
 .category-container {
     width: 100%;
     padding-top: 150px;
@@ -369,7 +368,6 @@ body.home-page .hero {
     color: white;
 }
 
-/* Alt Bilgi (Footer) */
 .bottom-barrier {
     width: 100%;
     margin-top: auto;
@@ -403,7 +401,6 @@ body.home-page .hero {
     color: #9fd2ff;
 }
 
-/* Mobil / Responsive Tasarım */
 @media (max-width: 768px) {
     .category-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -432,7 +429,6 @@ body.home-page .hero {
     }
 }
 
-/* --- Profil ve Açılır Menü Stilleri --- */
 .user-menu {
     position: relative;
     display: inline-block;
@@ -494,7 +490,6 @@ body.home-page .hero {
     display: block;
 }
 
-/* --- Profil Sayfası Özel Stilleri --- */
 .profile-box {
     position: relative;
 }
@@ -527,7 +522,7 @@ body.home-page .hero {
     align-items: center;
     min-height: 80vh;
     padding: 120px 20px 40px 20px;
-}
+    }
 
 .profile-box {
     background: #fff;
@@ -623,7 +618,6 @@ body.home-page .hero {
     background: #218838;
 }
 
-/* Bildirim Kutuları */
 .alert {
     padding: 12px;
     border-radius: 5px;
@@ -634,7 +628,6 @@ body.home-page .hero {
 .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
 .alert-danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
 
-/* --- Sayfalar Arası Düzenlemeler (Hakkımızda, İletişim, Rezervasyon, Detay) --- */
 .content-section {
     padding: 50px 20px;
     text-align: center;
@@ -642,7 +635,6 @@ body.home-page .hero {
     margin: auto;
     min-height: 50vh;
 }
-/* Hakkımızda yazıları artık ZORUNLU beyaz */
 .content-section h2, 
 .content-section p, 
 .content-section strong, 
@@ -663,7 +655,7 @@ body.home-page .hero {
 .contact-section h2 {
     text-align: center;
     margin-bottom: 40px;
-    color: #ffffff !important;
+    color: #ffffff 
 }
 .contact-container {
     display: flex;
@@ -671,18 +663,16 @@ body.home-page .hero {
     gap: 40px;
     justify-content: space-between;
 }
-/* İletişim Gri Kutucuğu - Daha belirgin ve esnek yapıldı */
 .contact-box {
     flex: 1;
     width: 100%; 
     backdrop-filter: blur(8px);
-    background: rgba(90, 90, 90, 0.65); /* Yarı şeffaf belirgin gri */
+    background: rgba(90, 90, 90, 0.65);
     padding: 40px 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Derinlik veren gölge */
-    border: 1px solid rgba(255, 255, 255, 0.15); /* Hafif beyaz çerçeve */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.15); 
 }
-/* İletişim yazıları artık ZORUNLU beyaz */
 .contact-box h3, 
 .contact-box p, 
 .contact-box strong {
@@ -780,7 +770,6 @@ body.home-page .hero {
     color: #eee;
 }
 
-/* --- Kategori Sayfaları (Araç Kartları ve Modallar) --- */
 .cars-section {
     padding: 100px 20px;
     max-width: 1400px;
@@ -848,7 +837,6 @@ body.home-page .hero {
     margin-bottom: 20px; 
 }
 
-/* Galeri Modalı */
 .gallery-modal {
     display: none;
     position: fixed;
@@ -929,7 +917,6 @@ body.home-page .hero {
     border: 2px solid #e74c3c;
 }
 
-/* Kiralama Seçenekleri Modal İçi CSS */
 .rent-options { 
     text-align: left; 
     margin: 20px 0; 
@@ -948,3 +935,72 @@ body.home-page .hero {
 .rent-options input[type="radio"] {
     margin-right: 10px;
 }
+.modal-box select option {
+    background-color: #222222; 
+    color: #ffffff;
+    padding: 10px;
+}
+
+body.success-page {
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: none; 
+}
+.success-page .success-card {
+    background: #1a1a1a;
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.success-page .check-circle {
+    width: 90px;
+    height: 90px;
+    background: rgba(40, 167, 69, 0.1);
+    border: 3px solid #28a745;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 25px auto;
+}
+.success-page .check-circle svg {
+    width: 45px;
+    height: 45px;
+    color: #28a745;
+}
+.success-page h1 { font-size: 26px; margin-bottom: 15px; color: #fff; }
+.success-page p { font-size: 15px; color: #aaa; line-height: 1.6; margin-bottom: 30px; }
+.success-page .details-box {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.success-page .details-box span { display: block; font-size: 14px; color: #ddd; margin: 5px 0; }
+.success-page .details-box strong { color: #bf94ff; }
+.success-page .details-box strong.price-text { color: #28a745; }
+.success-page .home-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    background: #6d3cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.success-page .home-btn:hover { background: #7b4dff; transform: translateY(-2px); }

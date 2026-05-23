@@ -1,4 +1,7 @@
-﻿<?php session_start(); ?>
+﻿<?php 
+session_set_cookie_params(0);
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="tr"> 
 <head>
@@ -61,33 +64,55 @@
       </div>
     </div>
 
-    <div class="login-modal" id="rentModal">
-      <div class="modal-box">
-        <button class="close" type="button" onclick="closeRentModal()">×</button>
-        <h2 id="rentCarTitle" style="color: #333;">Araç Kirala</h2>
-        <p style="color:#666; margin-bottom:10px;">Lütfen kiralama sürenizi seçin:</p>
-        
-        <form method="get" action="reservation.php">
-            <input type="hidden" name="car_name" id="hiddenCarName">
+    <div id="rentModal" class="modal login-modal">
+        <div class="modal-box">
+            <button class="close" onclick="closeRentModal()">&times;</button>
+            <h2 id="selectedCarName" style="color: #bf94ff; margin-bottom: 20px;">Araç Kirala</h2>
             
-            <div class="rent-options">
-                <label>
-                    <input type="radio" name="duration" value="1" checked>
-                    1 Günlük - <strong id="price1"></strong> ₺
-                </label>
-                <label>
-                    <input type="radio" name="duration" value="3">
-                    3 Günlük (%5 İndirimli) - <strong id="price3"></strong> ₺
-                </label>
-                <label>
-                    <input type="radio" name="duration" value="7">
-                    7 Günlük (%10 İndirimli) - <strong id="price7"></strong> ₺
-                </label>
-            </div>
-            
-            <button type="submit" class="action-btn">Rezerve Et</button>
-        </form>
-      </div>
+            <form action="rent_process.php" method="POST" id="rentForm">
+                <input type="hidden" id="carNameInput" name="car_name">
+                <input type="hidden" id="dailyPriceInput">
+                <input type="hidden" id="totalPriceInput" name="total_price">
+
+                <div class="input-group">
+                    <select name="pickup_location" required style="width: 100%; padding: 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: white;">
+                        <option value="" disabled selected>Alış Noktası Seçin</option>
+                        <option value="İstanbul - Kadıköy">İstanbul - Kadıköy</option>
+                        <option value="İstanbul - Havalimanı">İstanbul - Havalimanı</option>
+                        <option value="Ankara - Çankaya">Ankara - Çankaya</option>
+                        <option value="İzmir - Alsancak">İzmir - Alsancak</option>
+                    </select>
+                </div>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <select name="dropoff_location" required style="width: 100%; padding: 14px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12); color: white;">
+                        <option value="" disabled selected>Teslim Noktası Seçin</option>
+                        <option value="İstanbul - Kadıköy">İstanbul - Kadıköy</option>
+                        <option value="İstanbul - Havalimanı">İstanbul - Havalimanı</option>
+                        <option value="Ankara - Çankaya">Ankara - Çankaya</option>
+                        <option value="İzmir - Alsancak">İzmir - Alsancak</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <div class="input-group" style="flex: 1;">
+                        <label style="color: #aaa; font-size: 12px; margin-bottom: 5px; display: block;">Alış Tarihi</label>
+                        <input type="date" id="startDate" name="start_date" required style="width: 100%;">
+                    </div>
+                    <div class="input-group" style="flex: 1;">
+                        <label style="color: #aaa; font-size: 12px; margin-bottom: 5px; display: block;">Teslim Tarihi</label>
+                        <input type="date" id="endDate" name="end_date" required style="width: 100%;">
+                    </div>
+                </div>
+
+                <div style="text-align: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; margin-top: 20px; border: 1px solid rgba(255,255,255,0.05);">
+                    <span style="color: #aaa; font-size: 14px;">Toplam Tutar</span><br>
+                    <strong id="totalPriceDisplay" style="color: #28a745; font-size: 28px;">0 ₺</strong>
+                </div>
+
+                <button type="submit" class="action-btn" style="background: #28a745; margin-top: 15px; font-weight: bold; font-size: 16px;">Rezervasyonu Tamamla</button>
+            </form>
+        </div>
     </div>
     
     <div class="gallery-modal" id="galleryModal">
@@ -147,7 +172,6 @@
         <div class="bottom-links">
             <a href="about.php">Hakkımızda</a>
             <a href="contact.php">İletişim</a>
-            <a href="reservation.php">Rezervasyon</a>
         </div>
     </footer>
 

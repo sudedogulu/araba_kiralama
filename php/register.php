@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_set_cookie_params(0);
 session_start();
 require_once __DIR__ . '/db.php';
 
@@ -44,7 +45,7 @@ $stmt->bind_param('ssss', $fullName, $phone, $email, $passwordHash);
 
 if ($stmt->execute()) {
     $_SESSION['success_message'] = 'Başarıyla kayıt oldunuz! Lütfen giriş yapın.';
-    $_SESSION['open_modal'] = 'login'; // Başarılıysa kayıt kutusunu kapat, login kutusunu aç!
+    $_SESSION['open_modal'] = 'login';
     header('Location: ../index.php');
 } else {
     $_SESSION['error_message'] = 'Kayıt sırasında bir hata oluştu.';

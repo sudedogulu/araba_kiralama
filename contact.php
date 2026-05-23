@@ -68,8 +68,8 @@
             <div class="contact-box">
                 <h3>İletişim Bilgilerimiz</h3>
                 <p><strong>Adres:</strong> Siirt Üniversitesi, Mühendislik Fakültesi, MERKEZ/SİİRT</p>
-                <p><strong>Telefon:</strong> +90 551 880 18 18</p>
-                <p><strong>E-posta:</strong> sudedoguluu@gmail.com</p>
+                <p><strong>Telefon:</strong> +90 551 880 18 18/ +90 535 388 28 60</p>
+                <p><strong>E-posta:</strong> sudedoguluu@gmail.com/ salihonderr@gmail.com</p>
                 <p><strong>Çalışma Saatleri:</strong> 7/24 Kesintisiz Hizmet</p>
             </div>
         </div>
@@ -80,7 +80,6 @@
         <div class="bottom-links">
             <a href="about.php">Hakkımızda</a>
             <a href="contact.php">İletişim</a>
-            <a href="reservation.php">Rezervasyon</a>
         </div>
     </footer>
 

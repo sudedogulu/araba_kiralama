@@ -1,12 +1,10 @@
 <?php
-// Database connection
 $conn = mysqli_connect("localhost", "root", "", "ARABA_KIRALAMA");
 
 if (!$conn) {
     die("Bağlantı başarısız: " . mysqli_connect_error());
 }
 
-// Create users table
 $sql = "CREATE TABLE IF NOT EXISTS `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `full_name` VARCHAR(255) NOT NULL,
@@ -21,7 +19,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `users` (
 if (mysqli_query($conn, $sql)) {
     echo "<h2 style='color: green; font-family: Arial;'>✅ Tablo başarıyla oluşturuldu!</h2>";
     echo "<p>Users tablosu ARABA_KIRALAMA veritabanında oluşturulmuştur.</p>";
-    // Link güncellendi: index.php yerine index.php'e gidiyor
     echo "<p><a href='../index.php'>Ana sayfaya dön</a></p>";
 } else {
     echo "<h2 style='color: red; font-family: Arial;'>❌ Hata oluştu!</h2>";

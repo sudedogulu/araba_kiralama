@@ -14,10 +14,3 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Örnek kullanıcı eklemek için:
--- INSERT INTO users (email, password_hash) VALUES ('test@example.com', '$2y$10$abcdefghijklmnopqrstuv');
-
--- Eğer `users` tablosunu daha önce oluşturduysanız ve yeni alanları eklemek isterseniz:
--- ALTER TABLE users ADD COLUMN full_name VARCHAR(255) NOT NULL AFTER id;
--- ALTER TABLE users ADD COLUMN phone VARCHAR(30) NOT NULL AFTER full_name;

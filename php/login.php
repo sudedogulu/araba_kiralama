@@ -1,9 +1,9 @@
 <?php
 ob_start();
+session_set_cookie_params(0);
 session_start();
 require_once __DIR__ . '/db.php';
 
-// Kullanıcının geldiği sayfayı hafızaya al, bulamazsa index.php'ye yolla
 $redirect_url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '../index.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

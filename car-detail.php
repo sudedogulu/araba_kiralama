@@ -88,7 +88,6 @@
         <div class="bottom-links">
             <a href="about.php">Hakkımızda</a>
             <a href="contact.php">İletişim</a>
-            <a href="reservation.php">Rezervasyon</a>
         </div>
     </footer>
 

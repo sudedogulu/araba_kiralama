@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_set_cookie_params(0);
 session_start();
 require_once __DIR__ . '/db.php';
 
@@ -19,7 +20,6 @@ if (empty($fullName) || empty($phone) || empty($email)) {
     exit;
 }
 
-// E-posta adresi başka bir kullanıcı tarafından kapılmış mı kontrolü
 $checkEmail = $conn->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
 $checkEmail->bind_param("si", $email, $userId);
 $checkEmail->execute();
@@ -29,20 +29,16 @@ if ($checkEmail->get_result()->num_rows > 0) {
     exit;
 }
 
-// PROFİL FOTOĞRAFI YÜKLEME İŞLEMİ
 $profilePicName = null;
 if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_ERR_OK) {
     $fileTmpPath = $_FILES['profile_pic']['tmp_name'];
     $fileName    = $_FILES['profile_pic']['name'];
     $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     
-    // Sadece resim formatlarına izin ver
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
     if (in_array($fileExtension, $allowedExtensions)) {
-        // Benzersiz bir dosya adı oluştur (Örn: user_1_17154823.png)
         $profilePicName = 'user_' . $userId . '_' . time() . '.' . $fileExtension;
         
-        // Yükleme klasörünü kontrol et, yoksa oluştur
         $uploadDir = '../uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
@@ -50,7 +46,6 @@ if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_
         
         $destPath = $uploadDir . $profilePicName;
         if (move_uploaded_file($fileTmpPath, $destPath)) {
-            // Eski resmi veritabanından bulup klasörden silme (Temizlik)
             $oldPicQuery = $conn->prepare("SELECT profile_pic FROM users WHERE id = ?");
             $oldPicQuery->bind_param("i", $userId);
             $oldPicQuery->execute();
@@ -59,25 +54,23 @@ if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] === UPLOAD_
                 unlink($uploadDir . $oldPic);
             }
         } else {
-            $profilePicName = null; // Yükleme başarısızsa null kalır
+            $profilePicName = null; 
         }
     }
 }
 
-// VERİTABANI GÜNCELLEME
 if ($profilePicName !== null) {
-    // Fotoğraf değiştiyse her şeyi güncelle
     $stmt = $conn->prepare("UPDATE users SET full_name = ?, phone = ?, email = ?, profile_pic = ? WHERE id = ?");
     $stmt->bind_param("ssssi", $fullName, $phone, $email, $profilePicName, $userId);
-    $_SESSION['profile_pic'] = $profilePicName; // Session'ı güncelle
+    $_SESSION['profile_pic'] = $profilePicName; 
 } else {
-    // Fotoğraf değişmediyse sadece metinleri güncelle
+    
     $stmt = $conn->prepare("UPDATE users SET full_name = ?, phone = ?, email = ? WHERE id = ?");
     $stmt->bind_param("sssi", $fullName, $phone, $email, $userId);
 }
 
 if ($stmt->execute()) {
-    $_SESSION['full_name'] = $fullName; // Navbardaki ismin anında değişmesi için
+    $_SESSION['full_name'] = $fullName; 
     $_SESSION['success_message'] = 'Profil bilgileriniz başarıyla güncellendi.';
 } else {
     $_SESSION['error_message'] = 'Güncelleme sırasında bir hata oluştu.';
