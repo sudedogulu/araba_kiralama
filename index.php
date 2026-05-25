@@ -10,7 +10,8 @@
 <body class="home-page">
     
    <nav>
-    <h1>DriveNow</h1>
+   
+        <h1>DriveNow</h1>
     <ul>
         <li><a href="index.php">Ana Sayfa</a></li>
         <li><a href="cars.php">Araçlar</a></li>
@@ -91,6 +92,7 @@
         <div class="bottom-links">
             <a href="about.php">Hakkımızda</a>
             <a href="contact.php">İletişim</a>
+            <a href="mailto:drivenow.rental.company@gmail.com">Bize E-Posta Gönder</a>
         </div>
     </footer>
 

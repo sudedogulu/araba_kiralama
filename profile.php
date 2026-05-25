@@ -25,7 +25,8 @@ $avatarPath = !empty($user['profile_pic']) ? 'uploads/' . $user['profile_pic'] :
 <body class="profile-page">
     
    <nav>
-    <h1>DriveNow</h1>
+   
+        <h1>DriveNow</h1>
     <ul>
         <li><a href="index.php">Ana Sayfa</a></li>
         <li><a href="cars.php">Araçlar</a></li>
@@ -95,6 +96,7 @@ $avatarPath = !empty($user['profile_pic']) ? 'uploads/' . $user['profile_pic'] :
         <div class="bottom-links">
             <a href="about.php">Hakkımızda</a>
             <a href="contact.php">İletişim</a>
+            <a href="mailto:drivenow.rental.company@gmail.com">Bize E-Posta Gönder</a>
         </div>
     </footer>
 

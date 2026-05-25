@@ -51,6 +51,27 @@ nav h1 {
     font-size: 34px;
 }
 
+.youtube-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.youtube-link img {
+    height: 32px; 
+    width: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.youtube-link:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8));
+}
+
 nav ul {
     display: flex;
     gap: 30px;
@@ -1003,4 +1024,27 @@ body.success-page {
     font-weight: 600;
     transition: 0.3s;
 }
-.success-page .home-btn:hover { background: #7b4dff; transform: translateY(-2px); }
+.success-page .home-btn:hover {
+     background: #7b4dff; transform: translateY(-2px);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #6d3cff;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.back-to-top:hover {
+    background: #7b4dff;
+    transform: translateY(-4px);
+    color: white;
+}

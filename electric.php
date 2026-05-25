@@ -13,7 +13,8 @@ session_start();
 <body>
     
    <nav>
-    <h1>DriveNow</h1>
+   
+        <h1>DriveNow</h1>
     <ul>
         <li><a href="index.php">Ana Sayfa</a></li>
         <li><a href="cars.php">Araçlar</a></li>
@@ -172,9 +173,11 @@ session_start();
         <div class="bottom-links">
             <a href="about.php">Hakkımızda</a>
             <a href="contact.php">İletişim</a>
+            <a href="mailto:drivenow.rental.company@gmail.com">Bize E-Posta Gönder</a>
         </div>
     </footer>
 
     <script src="js/style.js"></script>
+    <a href="#" class="back-to-top">⬆ Sayfa Başı</a>
 </body>
 </html>

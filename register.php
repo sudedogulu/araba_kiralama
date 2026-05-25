@@ -10,7 +10,8 @@
     </head>
 <body class="home-page">
    <nav>
-    <h1>DriveNow</h1>
+   
+        <h1>DriveNow</h1>
     <ul>
         <li><a href="index.php">Ana Sayfa</a></li>
         <li><a href="cars.php">Araçlar</a></li>
